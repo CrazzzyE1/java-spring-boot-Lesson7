@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,21 @@ public class ProductService {
 	@Transactional
 	public void addOrUpdate(Product product) {
 		productRepository.save(product);
+	}
+
+	@Transactional
+	public List<Product> findProductByPriceBetween(BigDecimal min, BigDecimal max) {
+		return productRepository.findProductByPriceBetween(min, max);
+	}
+
+	@Transactional
+	public List<Product> findProductByPriceBefore(BigDecimal price) {
+		return productRepository.findProductByPriceBefore(price);
+	}
+
+	@Transactional
+	public List<Product> findProductByPriceAfter(BigDecimal price) {
+		return productRepository.findProductByPriceAfter(price);
 	}
 
 	@Transactional

@@ -19,11 +19,17 @@
             </div>
             <div class="col-6">
                 <form class="form-inline" th:method="get">
-                    <!-- TODO добавить поля фильтров из ДЗ -->
                     <input type="text" th:value="${param.titleFilter}" class="form-control-md" id="title-filter"
                            name="titleFilter" placeholder="Find">
                     <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
                     <a class="btn btn-outline-dark" th:href="@{/product/new}">ADD</a>
+                </form>
+                <form class="form-inline" th:method="get" th:action="@{/product/show}">
+                    <input type="text" th:value="${param.minPrice}" class="form-control-md" id="minPriceFilter"
+                           name="minPriceFilter" placeholder="Min price">
+                    <input type="text" th:value="${param.maxPrice}" class="form-control-md" id="maxPriceFilter"
+                           name="maxPriceFilter" placeholder="Max price">
+                    <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
                 </form>
             </div>
         </div>
